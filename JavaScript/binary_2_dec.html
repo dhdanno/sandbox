@@ -1,0 +1,87 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>Decimal To Binary Converter</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+</head>
+<body>
+	<form id="f">
+		<input type="text" value=""></input>
+		<input type="submit">
+	</form>
+
+	<div id="result"></div>
+</body>
+
+
+
+<script type="text/javascript">
+
+$( "#f" ).submit(function( event ) {
+  var val = $( "#f input" ).val();
+  dec2bin(val);
+  event.preventDefault();
+});
+
+
+var bin = '';
+function dec2bin(num) {
+	//dont run if we dont have an int
+	if (!isNumber(num))
+		return;
+	
+	//run once step one.
+	if (isEven(num)) {
+		//console.log("0");
+		bin = '0';
+	} else {
+		//console.log("1");
+		bin = '1';
+	}
+
+	// call the recursive function
+	loop(num);
+
+	//update the html
+	$("#result").html(bin);
+   
+}
+
+function loop(int) {
+
+    int = int / 2; //Divide the number by 2
+    if(!isEven(int)) 
+		int = parseInt(int); // throw away any fractional component or remainder.
+
+    if (int == 0) { //If the quotient is 0, the algorithm is complete.
+        //console.log("END");
+        return;
+
+    } else if(!isEven(int)) { //If the quotient is not 0 and is odd, insert a 1 before the current string
+        //console.log("1");
+        bin = bin + '1';
+        loop(int);
+
+    } else if(isEven(int)) { //if the number is even, prefix your binary string with 0.
+    	//console.log("0");
+    	bin = bin + '0';
+    	loop(int);
+    }
+}
+
+function isNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+function isEven(int) {
+
+	div = int / 2; //divide by two
+	if (div % 1 == 0) { //check for a remainder using modulus
+        return true;
+    } else { //if we have a decimal place its not even
+        return false;
+    }
+}
+
+</script>
+</html>
