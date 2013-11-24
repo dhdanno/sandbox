@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  dob: 2013-11-23
+  sin: 1
+  current_address: MyText
+  current_employer: MyString
+
+two:
+  name: MyString
+  dob: 2013-11-23
+  sin: 1
+  current_address: MyText
+  current_employer: MyString

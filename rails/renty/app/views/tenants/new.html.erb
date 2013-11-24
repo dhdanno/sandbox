@@ -1,0 +1,23 @@
+<h2>New Tenant</h2>
+
+<%= form_for(@tenant) do |f| %>
+  <% @tenant.build_user %>
+
+
+<%= f.fields_for :user do |ff| %>
+     <div><%= ff.label :email %><br />
+	  <%= ff.email_field :email, :autofocus => true %></div>
+
+	  <div><%= ff.label :password %><br />
+	  <%= ff.password_field :password %></div>
+
+	  <div><%= ff.label :password_confirmation %><br />
+	  <%= ff.password_field :password_confirmation %></div>
+	
+<% end %>
+
+  <div><%=f.label :first_name %> <br />
+  	<%= f.text_field :first_name %>
+  <div><%= f.submit "Sign up" %></div>
+
+<% end %>
