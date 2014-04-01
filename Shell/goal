@@ -1,0 +1,18 @@
+select all http connections where they match one tcp connection
+
+loop through the tcp log and for each line found, loop through the http log and echo out the line
+
+
+for each line in conn.log $2
+
+	for each line in http.log
+
+		if line==$1
+			echo line
+		end
+	end
+
+end
+
+
+
